@@ -2,8 +2,9 @@ function createMidi(){
     console.log('---------- CreateMidi ----------');
     
     var MidiWriter = require('MidiWriter');
-    
-    var track = MidiWriter.VexFlow.trackFromVoice(window.voice); //new MidiWriter.VexFlow().trackFromVoice(window.voice); 
+    var Vex = new MidiWriter.VexFlow;
+    console.log(window.voice);
+    var track = Vex.trackFromVoice(window.voice); //new MidiWriter.VexFlow().trackFromVoice(window.voice); 
     var writer = new MidiWriter.Writer([track]);
     
     console.log("MIDI Data URI:")
@@ -23,7 +24,7 @@ function renderTab(){
 
     $("#plainText").keyup(_.throttle(window.render, 250));
     render();
-
+  
     window.voice = window.artist.getPlayerData().voices[0][0];
 
 }
